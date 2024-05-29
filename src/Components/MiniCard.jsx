@@ -8,9 +8,9 @@ import snow from '../assets/icons/snow.png'
 import storm from '../assets/icons/storm.png'
 import wind from '../assets/icons/windy.png'
 
-const MiniCard = ({ time, temp, iconString }) => {
+const MiniCard = ({ time, temp, iconString,aqiVal }) => {
   const [icon, setIcon] = useState()
-
+  console.log("aqi val is",aqiVal)
   useEffect(() => {
     if (iconString) {
       if (iconString.toLowerCase().includes('cloud')) {
@@ -40,6 +40,7 @@ const MiniCard = ({ time, temp, iconString }) => {
         <img src={icon} alt="forecast not available" className='w-[4rem] h-[4rem]' />
       </div>
       <p className='text-center font-bold'>{temp}&deg;C</p>
+      <p className='text-center font-bold'>{aqiVal.yhat.toFixed(2)}</p>
     </div>
   )
 }

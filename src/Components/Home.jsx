@@ -18,7 +18,7 @@ function Home() {
     
   // }
 
-  const { weather, thisLocation, values, place, setPlace } = useStateContext();
+  const { weather, thisLocation, values, place, setPlace,aqiVals } = useStateContext();
 
   return (
     <div className='w-full h-screen text-white px-8'>
@@ -32,17 +32,19 @@ function Home() {
           heatIndex={weather.heatindex}
           iconString={weather.conditions}
           conditions={weather.conditions}
+          aqiVal={aqiVals[0]}
         />
 
         <div className='flex justify-center gap-8 flex-wrap w-[60%]'>
           {
-            values?.slice(1, 7).map(curr => {
+            values?.slice(1, 7).map((curr,index) => {
               return (
                 <MiniCard
                   key={curr.datetime}
                   time={curr.datetime}
                   temp={curr.temp}
                   iconString={curr.conditions}
+                  aqiVal={aqiVals[index+1]}
                 />
               )
             })

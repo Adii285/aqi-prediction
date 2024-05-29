@@ -8,8 +8,26 @@ export const StateContextProvider = ({ children }) => {
     const [values, setValues] = useState([])
     const [place, setPlace] = useState('Shimla')
     const [thisLocation, setLocation] = useState('')
-
+    const [aqiVals,setAqiVals]=useState([])
     // fetch api
+    const fetcAqi=async ()=>{
+        let location;
+        if(place==='Hyderabad')
+            location='hyderabad'
+        else if(place==='New Delhi')
+            location='delhi'
+        else
+            location='delhi'
+        axios.post('http://localhost:3000/aqi', {
+            location
+          })
+          .then((response) => {
+            setAqiVals(response.data.slice(7,15))
+            console.log(response.data.slice(7,15));
+          }, (error) => {
+            console.log(error);
+          });
+    }
     const fetchWeather = async () => {
         const options = {
             method: 'GET',
@@ -46,6 +64,7 @@ export const StateContextProvider = ({ children }) => {
 
     useEffect(() => {
         fetchWeather()
+        fetcAqi()
     }, [place])
 
     useEffect(() => {
@@ -58,7 +77,8 @@ export const StateContextProvider = ({ children }) => {
             setPlace,
             values,
             thisLocation,
-            place
+            place,
+            aqiVals
         }}>
             {children}
         </StateContext.Provider>
