@@ -18,6 +18,7 @@ const WeatherCard = ({
   heatIndex,
   iconString,
   conditions,
+  aqiVal
 }) => {
 
   const [icon, setIcon] = useState(sun)
@@ -44,7 +45,7 @@ const WeatherCard = ({
   }, [iconString])
 
   return (
-    <div className='w-[22rem] min-w-[22rem] h-[30rem] glassCard p-4'>
+    <div className='w-[22rem] min-w-[22rem] h-[32rem] glassCard p-4'>
       <div className='flex w-full just-center, items-center gap-4 mt-3 mb-4'>
         <img src={icon} alt="weather_icon" />
         <p className='font-bold text-5xl flex justify-center items-center' >{temperature} &deg;C</p>
@@ -63,6 +64,10 @@ const WeatherCard = ({
       <div className='w-full p-3 mt-4 flex justify-between items-center'>
         <p className='font-semibold text-lg'>Heat Index</p>
         <p className='text-lg'>{heatIndex ? heatIndex : 'N/A'}</p>
+      </div>
+      <div className='w-full p-3 mt-4 flex justify-between items-center'>
+        <p className='font-semibold text-lg'>AQI</p>
+        <p className='text-lg'>{aqiVal ? aqiVal.yhat.toFixed(2) : 'N/A'}</p>
       </div>
       <hr className='bg-slate-600' />
       <div className='w-full p-4 flex justify-center items-center text-3xl font-semibold'>
