@@ -9,7 +9,7 @@ import Snow from '../assets/images/snow.jpg'
 import Stormy from '../assets/images/Stormy.jpg'
 import Sunny from '../assets/images/Sunny.jpg'
 import Delhi from '../assets/images/delhi.jfif'
-import Shimla from '../assets/images/shimla.jfif'
+import Shimla from '../assets/images/shimla.jpg'
 import Hyderabad from '../assets/images/hyderabad.jfif'
 
 const BackgroundLayout = () => {
